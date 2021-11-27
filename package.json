@@ -15,16 +15,19 @@
     "graphql": "^16.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-router-dom": "^6.0.2",
+    "react-helmet": "^6.1.0",
+    "react-helmet-async": "^1.1.2",
+    "react-hook-form": "^7.20.4",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.3",
     "rimraf": "^3.0.2",
     "typescript": "^4.1.2",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "download-schema": "apollo service:download --endpoint=http://localhost:3001/graphql graphql-schema.json",
-    "codegen": "npm run download-schema && apollo codegen:generate --localSchemaFile=graphql-schema.json --target=typescript --tagName=gql",
-    "start": "craco start",
+    "tailwind:build": "npx tailwindcss -i ./src/styles/tailwind.css -o ./src/styles/styles.css",
+    "codegen": "rm -rf src/__generated__ && npx apollo client:codegen src/__generated__ --target=typescript --outputFlat",
+    "start": "npm run codegen && npm run tailwind:build & craco start",
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject"
@@ -48,6 +51,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-router-dom": "^5.3.2",
     "autoprefixer": "^9.8.8",
     "postcss": "^7.0.39",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17"
