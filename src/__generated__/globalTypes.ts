@@ -24,6 +24,11 @@ export interface LoginInput {
   password: string;
 }
 
+export interface SearchPodcastsInput {
+  page?: number | null;
+  titleQuery: string;
+}
+
 //==============================================================
 // END Enums and Input Objects
 //==============================================================
